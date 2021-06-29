@@ -1,16 +1,22 @@
 package com.revature.models;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
-import com.revature.InputValidation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.validation.InputValidation;
+import com.revature.daos.DepartmentDaos;
 import com.revature.daos.Empoyeedaos;
 import com.revature.daos.PositionDaso;
 
-public class Menu {
+public class Menu{
 
 	Empoyeedaos ed = new Empoyeedaos();
 	PositionDaso P = new PositionDaso();
+	DepartmentDaos D = new DepartmentDaos();
 	InputValidation V = new InputValidation();
 	boolean validation;
 	Scanner scanner = new Scanner(System.in);
@@ -18,12 +24,13 @@ public class Menu {
 	public  void display() {
 		
 		boolean displayMenu = true; //this toggles weather the menu continues after user input
-		
+		final Logger log = LogManager.getLogger(Menu.class);
 			int input = V.ValidateInput();
 						
 			//switch statements that takes the user input and does some logic depending on that input 
 				switch(input) {
 				case 1:{
+					
 					System.out.println("Gathering all employees....");
 					
 					List<Employee> employees = ed.getEmployee();
@@ -35,6 +42,7 @@ public class Menu {
 					break;
 				}
 				case 2:{
+					log.info("User Selected all Employees and their position");
 					ed.getEmployeePosition();
 					
 					break;
@@ -83,13 +91,8 @@ public class Menu {
 					
 					break;
 				}
-				case 5: {
-					System.out.println("----------------------------------");
-					System.out.println("Thank You for using our service :)");
-					break;
-				}
 				
-				case 6: {
+				case 5: {
 					System.out.println("Enter Employee First Name:");
 					String employee_fname = scanner.nextLine();
 					
@@ -128,7 +131,8 @@ public class Menu {
 					ed.addEmployees(newEmployee1);
 					break;				
 				}
-				case 7: {
+				case 6: {
+					log.warn("User deleted an employee");
 					System.out.println("Please Enter First Name of Employee you want to Delete");
 					String fname = scanner.nextLine();
 					System.out.println("Please Enter Last Name of Employee you want to Delete");
@@ -137,10 +141,10 @@ public class Menu {
 					ed.deleteEmployee(fname, Lname);
 					break;
 				}
-				case 8: {
+				case 7: {
 					System.out.println("List of all Position");
 					System.out.println("---------------------");
-					List<Position> positions = P.getEmployee();
+					List<Position> positions = P.getPosition();
 					
 					for(Position p: positions) {
 						System.out.println(p.getPosition_id() +")." + p.getPosition_name());
@@ -148,8 +152,35 @@ public class Menu {
 					break;
 					
 				}
+				case 8: {
+					System.out.println("List of all Departments");
+					System.out.println("-----------------------");
+					List<Department> departments = D.getDepartments();
+					
+					for(Department D: departments) {
+						System.out.println(D.getDepartment_id() + "). " + D.getDepartment_name());
+					}
+					break;		
+				}
+				case 9: {
+					System.out.println("Please Enter new Positon you want to add");
+					String position_name = scanner.nextLine();
+					Position newPosition = new Position(position_name);
+					
+					P.addPostion(newPosition);
+					break;
+					
+				}
+				case 10: {
+					log.info("User Exited the application");
+					System.out.println("----------------------------------");
+					System.out.println("Thank You for using our service :)");
+					break;
+				}
 				default: {
+					
 					System.out.println("Invlid entry, please try again");
+					
 				}
 				}
 				

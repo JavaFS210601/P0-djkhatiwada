@@ -182,7 +182,7 @@ try(Connection C = ConnectionUtil.getConnection()){
 			ps.executeUpdate(); //we use executeUpdate for Insert(Also for update and delete)
 			
 			//send conformation to the console if successful
-			System.out.println("New Employee " + emp1.getEmployee_fname() + emp1.getEmployee_lname() + " added to database");					
+			System.out.println("New Employee " + emp1.getEmployee_fname() +" "+ emp1.getEmployee_lname() + " added to database");					
 		}
 		catch(SQLException e) {
 			System.out.println("Something wrong! Add employee failed!");

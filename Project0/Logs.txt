@@ -1,0 +1,6 @@
+2021-06-28 22:53:50 INFO  Menu:33 - User Selected all employees
+2021-06-28 23:03:24 INFO  Menu:174 - User Exited the application
+2021-06-28 23:10:36 INFO  Menu:135 - User deleted an employee
+2021-06-28 23:11:16 WARN  Menu:135 - User deleted an employee
+2021-06-29 09:55:13 WARN  Menu:135 - User deleted an employee
+2021-06-29 09:58:02 INFO  Menu:45 - User Selected all Employees and their position
