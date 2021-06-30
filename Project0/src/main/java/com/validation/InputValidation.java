@@ -35,7 +35,7 @@ public class InputValidation {
 			System.out.println("------------------------------");
 		
 			//menu options
-			System.out.println("Enter 1. ->  show all employees");			
+			System.out.println("Enter 1. -> Show all employees detail");			
 			System.out.println("Enter 2. -> Get Employee and their Postion.");
 			System.out.println("Enter 3. -> Get Employee for Specific Positon");
 			System.out.println("Enter 4. -> Get Employee Working in Specific Department");			
@@ -59,8 +59,7 @@ public class InputValidation {
 				}
 				else {
 					log.info("User entered number grater than 10");
-					System.out.println("Please Enter a number between 1 and 10");
-					
+					System.out.println("Please Enter a number between 1 and 10");					
 				}						
 			}
 			else					//If the input is not a Integer
