@@ -25,8 +25,10 @@ public class Menu{
 		
 		boolean displayMenu = true; //this toggles weather the menu continues after user input
 		final Logger log = LogManager.getLogger(Menu.class);
+		
+		while(displayMenu) {
 			int input = V.ValidateInput();
-						
+		
 			//switch statements that takes the user input and does some logic depending on that input 
 				switch(input) {
 				case 1:{
@@ -175,16 +177,19 @@ public class Menu{
 					log.info("User Exited the application");
 					System.out.println("----------------------------------");
 					System.out.println("Thank You for using our service :)");
+					displayMenu = false;
 					break;
+					
 				}
 				default: {
 					
 					System.out.println("Invlid entry, please try again");
 					
 				}
-				}
 				
+				}
 			
+		}
 		
 	}
 }
